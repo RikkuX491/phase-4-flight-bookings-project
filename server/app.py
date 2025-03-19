@@ -19,6 +19,19 @@ class AllFlights(Resource):
         flights = Flight.query.all()
         response_body = [flight.to_dict(only=('id', 'airline', 'image')) for flight in flights]
         return make_response(response_body, 200)
+    
+    def post(self):
+        try:
+            new_flight = Flight(airline=request.json.get('airline'), image=request.json.get('image'))
+            db.session.add(new_flight)
+            db.session.commit()
+            response_body = new_flight.to_dict(only=('id', 'airline', 'image'))
+            return make_response(response_body, 201)
+        except Exception as e:
+            response_body = {
+                "error": str(e)
+            }
+            return make_response(response_body, 422)
 
 api.add_resource(AllFlights, '/flights')
 
