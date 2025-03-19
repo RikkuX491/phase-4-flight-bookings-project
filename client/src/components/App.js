@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 
 import Header from "./Header";
+import NavBar from "./NavBar";
 
 function App() {
 
@@ -15,12 +16,18 @@ function App() {
     .then(flightsData => setFlights(flightsData))
   }
 
+  function addFlight(newFlight){
+    setFlights([...flights, newFlight])
+  }
+
   return (
     <div className="app">
+      <NavBar/>
       <Header/>
       <Outlet context={
         {
-          flights: flights
+          flights: flights,
+          addFlight: addFlight
         }
       }/>
     </div>

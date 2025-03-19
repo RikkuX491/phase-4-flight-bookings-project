@@ -5,3 +5,8 @@ div.app {
 li.flight {
   list-style-type: none
 }
+
+nav a {
+  padding: 10px;
+  text-decoration: none;
+}

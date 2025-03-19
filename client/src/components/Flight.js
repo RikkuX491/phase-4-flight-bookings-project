@@ -1,5 +1,4 @@
 function Flight({flight}){
-    console.log(flight)
     return (
         <li className="flight">
             <h2>Flight # {flight.id}</h2>
