@@ -1,3 +1,7 @@
-header {
+div.app {
   text-align: center;
+}
+
+li.flight {
+  list-style-type: none
 }

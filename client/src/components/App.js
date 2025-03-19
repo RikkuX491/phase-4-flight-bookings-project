@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-// import { Switch, Route } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 import Header from "./Header";
 
 function App() {
 
   const [flights, setFlights] = useState([])
-  console.log(flights)
 
   useEffect(getFlights, [])
 
@@ -17,8 +16,13 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="app">
       <Header/>
+      <Outlet context={
+        {
+          flights: flights
+        }
+      }/>
     </div>
   );
 }
